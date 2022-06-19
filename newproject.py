@@ -35,3 +35,7 @@ def get_project_name() -> str:
 
     # Return the Project Name
     return PRJ_NAME
+
+# Saving some Informations
+USERNAME = os.getenv("USERNAME")
+PROJECTS_PATH = "D:\GitHub"
