@@ -39,3 +39,38 @@ def get_project_name() -> str:
 # Saving some Informations
 USERNAME = os.getenv("USERNAME")
 PROJECTS_PATH = "D:\GitHub"
+
+# Method for Creating the Github Repository
+def create_github_repo(prj_name: str) -> str:
+
+    # Adding Animations
+    with CONSOLE.status("🔧 [green]Creating the Remote Repo...[reset]"):
+
+        # Trying to Operate
+        try:
+
+            # Access Token
+            ACCESS_TOKEN = os.getenv("TOKEN")
+
+            # Loging into Github
+            USER = Github(ACCESS_TOKEN).get_user()
+
+            # Modifing the Project Name
+            N_PRJ_NAME = prj_name.replace(" ", "-")
+
+            # Creating the Remote Repository
+            USER.create_repo(N_PRJ_NAME)
+
+        except Exception:
+
+            # Print an Error Message
+            CONSOLE.print("❌ [red]Error:[reset] Couldn't Create the Remote Repository!")
+
+            # Exit the Program
+            sys.exit(1)
+
+    # Success Message
+    CONSOLE.print("✅ [green]Success:[reset] Remote Repo Created!")
+
+    # Returning the Repo Remote URL
+    return f"https://github.com/{USERNAME}/{N_PRJ_NAME}.git"
