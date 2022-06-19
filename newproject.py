@@ -13,6 +13,8 @@ load_dotenv()
 CONSOLE = Console()
 
 # Method for Taking Project Name
+
+
 def get_project_name() -> str:
 
     # Creating a Scoped Project Name variable
@@ -36,11 +38,14 @@ def get_project_name() -> str:
     # Return the Project Name
     return PRJ_NAME
 
+
 # Saving some Informations
 USERNAME = os.getenv("USERNAME")
-PROJECTS_PATH = "D:\GitHub"
+PROJECTS_PATH = "D:\\GitHub"
 
 # Method for Creating the Github Repository
+
+
 def create_github_repo(prj_name: str) -> str:
 
     # Adding Animations
@@ -64,7 +69,8 @@ def create_github_repo(prj_name: str) -> str:
         except Exception:
 
             # Print an Error Message
-            CONSOLE.print("❌ [red]Error:[reset] Couldn't Create the Remote Repository!")
+            CONSOLE.print(
+                "❌ [red]Error:[reset] Couldn't Create the Remote Repository!")
 
             # Exit the Program
             sys.exit(1)
@@ -76,20 +82,22 @@ def create_github_repo(prj_name: str) -> str:
     return f"https://github.com/{USERNAME}/{N_PRJ_NAME}.git"
 
 # Method for Creating the Project Folder
+
+
 def create_local_project(prj_name: str, remote_link: str) -> None:
 
     # Adding Animations
     with CONSOLE.status("🔧 [green]Creating the Local Project..[reset]"):
 
         # Creating the Project's Folder
-        PROJECT_PATH = f"{PROJECTS_PATH}\{prj_name}"
+        PROJECT_PATH = f"{PROJECTS_PATH}\\{prj_name}"
         os.mkdir(PROJECT_PATH)
 
         # Changing the Working Directory to the Project's Folder
         os.chdir(PROJECT_PATH)
 
         # Creating the README.md File
-        with open(f"{PROJECT_PATH}\README.md", "w") as f:
+        with open(f"{PROJECT_PATH}\\README.md", "w") as f:
 
             # Writing the Content
             f.write(f"# {prj_name}")
@@ -108,11 +116,13 @@ def create_local_project(prj_name: str, remote_link: str) -> None:
         os.system(COMMAND)
 
     # Success Message
-    CONSOLE.print("✅ [green]Success:[reset] Local Project Created and Connected to the Remote Repo!")
+    CONSOLE.print(
+        "✅ [green]Success:[reset] Local Project Created and Connected to the Remote Repo!")
     CONSOLE.print("🔥 [green]You are Ready to Go![reset]")
 
     # Opening the Project in VS Code
     os.system(f"code {PROJECT_PATH}")
+
 
 # Main Program
 if __name__ == "__main__":
