@@ -113,3 +113,15 @@ def create_local_project(prj_name: str, remote_link: str) -> None:
 
     # Opening the Project in VS Code
     os.system(f"code {PROJECT_PATH}")
+
+# Main Program
+if __name__ == "__main__":
+
+    # Getting the Project Name
+    PRJ_NAME = get_project_name()
+
+    # Creating the Remote Repository
+    REMOTE_LINK = create_github_repo(PRJ_NAME)
+
+    # Creating the Local Project
+    create_local_project(PRJ_NAME, REMOTE_LINK)
