@@ -38,6 +38,16 @@ def get_project_name() -> str:
     # Return the Project Name
     return PRJ_NAME
 
+# Checking if the .env File Exists
+file_exists = os.path.exists(".\.env")
+
+# If not, creates It
+if not file_exists:
+
+    with open(".env", "w") as f:
+
+        # Writing the 2 Environment Variable Names
+        f.write("USERNAME=\nTOKEN=")
 
 # Saving some Informations
 USERNAME = os.getenv("USERNAME")
